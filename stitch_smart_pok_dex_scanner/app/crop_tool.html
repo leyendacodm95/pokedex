@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PokéScan - Limpiador y Recortador de Logos</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: #121212;
+      color: #e5e2e1;
+    }
+    .neon-border {
+      box-shadow: 0 0 15px rgba(255, 0, 60, 0.4), inset 0 0 15px rgba(255, 0, 60, 0.2);
+      border: 2px solid #ff003c;
+    }
+    .neon-text {
+      text-shadow: 0 0 8px rgba(255, 0, 60, 0.6);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .checkerboard {
+      background-image: linear-gradient(45deg, #1e1e1e 25%, transparent 25%), 
+                        linear-gradient(-45deg, #1e1e1e 25%, transparent 25%), 
+                        linear-gradient(45deg, transparent 75%, #1e1e1e 75%), 
+                        linear-gradient(-45deg, transparent 75%, #1e1e1e 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+      background-color: #121212;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-between p-6 md:p-12 relative overflow-x-hidden">
+  
+  <!-- Background Glows -->
+  <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#ff003c]/10 rounded-full blur-[120px] pointer-events-none"></div>
+  <div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#00fbfb]/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+  <!-- Header -->
+  <header class="w-full max-w-5xl flex items-center justify-between z-10 mb-8">
+    <div class="flex items-center gap-3">
+      <span class="material-symbols-outlined text-[#ff003c] text-3xl neon-text">auto_fix_high</span>
+      <h1 class="text-2xl font-bold tracking-tight text-white">PokéScan <span class="text-[#ff003c] font-light">Asset Studio</span></h1>
+    </div>
+    <span class="text-xs font-mono text-zinc-500 bg-zinc-900/80 px-3 py-1.5 rounded-full border border-zinc-800">v1.0 - Offline Tool</span>
+  </header>
+
+  <!-- Main Content -->
+  <main class="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-8 z-10 flex-grow items-stretch">
+    
+    <!-- Controls (Left) -->
+    <div class="lg:col-span-4 flex flex-col gap-6">
+      
+      <!-- Upload Box -->
+      <div class="glass-card rounded-2xl p-6 flex flex-col gap-4">
+        <h2 class="text-sm font-semibold tracking-wider text-zinc-400 uppercase">1. Carga tu imagen</h2>
+        <div id="dropzone" class="border-2 border-dashed border-zinc-800 hover:border-[#ff003c] transition-colors rounded-xl p-8 flex flex-col items-center justify-center gap-3 cursor-pointer group text-center">
+          <span class="material-symbols-outlined text-4xl text-zinc-500 group-hover:text-[#ff003c] transition-colors">cloud_upload</span>
+          <div class="flex flex-col gap-1">
+            <p class="text-sm text-zinc-300 font-medium">Arrastra tu logo aquí</p>
+            <p class="text-xs text-zinc-500">o haz clic para explorar</p>
+          </div>
+          <input type="file" id="fileInput" accept="image/png, image/jpeg, image/webp" class="hidden" />
+        </div>
+      </div>
+
+      <!-- Settings Box -->
+      <div class="glass-card rounded-2xl p-6 flex flex-col gap-6">
+        <h2 class="text-sm font-semibold tracking-wider text-zinc-400 uppercase">2. Ajustes de Limpieza</h2>
+        
+        <!-- Threshold Slider -->
+        <div class="flex flex-col gap-2">
+          <div class="flex justify-between items-center">
+            <label for="threshold" class="text-sm text-zinc-300 flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-xs text-zinc-400">opacity</span>
+              Umbral de Transparencia
+            </label>
+            <span id="thresholdVal" class="text-xs font-mono bg-zinc-900 px-2 py-0.5 rounded text-[#00fbfb]">15</span>
+          </div>
+          <input type="range" id="threshold" min="0" max="255" value="15" class="w-full h-1 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-[#ff003c]" />
+          <p class="text-[11px] text-zinc-500 leading-normal">
+            Elimina píxeles fantasmas o halos semitransparentes del fondo. A mayor valor, más píxeles se vuelven transparentes.
+          </p>
+        </div>
+
+        <!-- Margin Slider -->
+        <div class="flex flex-col gap-2">
+          <div class="flex justify-between items-center">
+            <label for="padding" class="text-sm text-zinc-300 flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-xs text-zinc-400">aspect_ratio</span>
+              Margen de Borde
+            </label>
+            <span id="paddingVal" class="text-xs font-mono bg-zinc-900 px-2 py-0.5 rounded text-[#00fbfb]">0 px</span>
+          </div>
+          <input type="range" id="padding" min="0" max="50" value="0" class="w-full h-1 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-[#ff003c]" />
+          <p class="text-[11px] text-zinc-500 leading-normal">
+            Añade un espacio extra de píxeles transparentes alrededor del logo después de recortarlo.
+          </p>
+        </div>
+
+        <!-- Background Fill Option -->
+        <div class="flex flex-col gap-2">
+          <label class="text-sm text-zinc-300 flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-xs text-zinc-400">palette</span>
+            Fondo del Icono
+          </label>
+          <div class="grid grid-cols-3 gap-2 mt-1">
+            <button id="bgTransparent" class="py-2 text-xs font-medium rounded-lg bg-[#ff003c] text-white border border-[#ff003c]">Transparente</button>
+            <button id="bgWhite" class="py-2 text-xs font-medium rounded-lg bg-zinc-900 hover:bg-zinc-800 text-zinc-300 border border-zinc-800">Blanco</button>
+            <button id="bgBlack" class="py-2 text-xs font-medium rounded-lg bg-zinc-900 hover:bg-zinc-800 text-zinc-300 border border-zinc-800">Negro</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Button -->
+      <button id="downloadBtn" disabled class="w-full py-4 rounded-xl bg-zinc-800 text-zinc-500 font-bold flex items-center justify-center gap-2 transition-all cursor-not-allowed">
+        <span class="material-symbols-outlined">download</span>
+        Descargar Logo Limpio
+      </button>
+
+    </div>
+
+    <!-- Previews (Right) -->
+    <div class="lg:col-span-8 flex flex-col gap-6">
+      <div class="glass-card rounded-2xl p-6 flex flex-col gap-4 flex-grow">
+        <h2 class="text-sm font-semibold tracking-wider text-zinc-400 uppercase">Previsualización de Resultados</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 flex-grow items-center">
+          
+          <!-- Original Preview -->
+          <div class="flex flex-col gap-2 items-center">
+            <span class="text-xs text-zinc-500 font-mono">Original (con márgenes vacíos)</span>
+            <div class="w-full aspect-square max-w-[320px] rounded-xl checkerboard flex items-center justify-center p-4 border border-zinc-800 relative overflow-hidden">
+              <img id="imgSource" class="max-w-full max-h-full object-contain hidden" />
+              <div id="imgPlaceholder" class="text-zinc-600 text-xs text-center flex flex-col items-center gap-2">
+                <span class="material-symbols-outlined text-3xl">image</span>
+                Sin imagen cargada
+              </div>
+            </div>
+          </div>
+
+          <!-- Processed Preview -->
+          <div class="flex flex-col gap-2 items-center">
+            <span class="text-xs text-zinc-500 font-mono">Procesado (ajustado a los bordes)</span>
+            <div class="w-full aspect-square max-w-[320px] rounded-xl checkerboard flex items-center justify-center p-4 border border-[#00fbfb]/30 shadow-[0_0_20px_rgba(0,251,251,0.05)] relative overflow-hidden">
+              <canvas id="outputCanvas" class="max-w-full max-h-full object-contain hidden"></canvas>
+              <div id="canvasPlaceholder" class="text-zinc-600 text-xs text-center flex flex-col items-center gap-2">
+                <span class="material-symbols-outlined text-3xl">crop_free</span>
+                Esperando imagen
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Info alert -->
+        <div class="flex gap-3 bg-zinc-950/60 p-4 rounded-xl border border-zinc-900 text-xs text-zinc-400 mt-2 leading-relaxed">
+          <span class="material-symbols-outlined text-[#00fbfb] text-lg">info</span>
+          <p>
+            El recortador calcula automáticamente los límites de los píxeles visibles de tu imagen, eliminando cualquier margen transparente no deseado. El deslizador de umbral ayuda a eliminar píxeles "sucios" de baja opacidad.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full max-w-5xl text-center text-xs text-zinc-600 mt-8 pt-6 border-t border-zinc-900 z-10 flex flex-col md:flex-row justify-between gap-4">
+    <p>Diseñado para PokéScan App - Android Resource Helper</p>
+    <p>Desarrollado de manera local sin transferencia de datos a internet</p>
+  </footer>
+
+  <script>
+    const dropzone = document.getElementById('dropzone');
+    const fileInput = document.getElementById('fileInput');
+    const thresholdInput = document.getElementById('threshold');
+    const thresholdVal = document.getElementById('thresholdVal');
+    const paddingInput = document.getElementById('padding');
+    const paddingVal = document.getElementById('paddingVal');
+    const downloadBtn = document.getElementById('downloadBtn');
+    
+    const imgSource = document.getElementById('imgSource');
+    const imgPlaceholder = document.getElementById('imgPlaceholder');
+    const outputCanvas = document.getElementById('outputCanvas');
+    const canvasPlaceholder = document.getElementById('canvasPlaceholder');
+
+    const bgTransparent = document.getElementById('bgTransparent');
+    const bgWhite = document.getElementById('bgWhite');
+    const bgBlack = document.getElementById('bgBlack');
+
+    let loadedImage = null;
+    let selectedBg = 'transparent'; // 'transparent', 'white', 'black'
+
+    // Click triggers file selector
+    dropzone.addEventListener('click', () => fileInput.click());
+
+    // Drag-and-drop events
+    dropzone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropzone.classList.add('border-[#ff003c]', 'bg-[#ff003c]/5');
+    });
+
+    dropzone.addEventListener('dragleave', () => {
+      dropzone.classList.remove('border-[#ff003c]', 'bg-[#ff003c]/5');
+    });
+
+    dropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropzone.classList.remove('border-[#ff003c]', 'bg-[#ff003c]/5');
+      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+        processFile(e.dataTransfer.files[0]);
+      }
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files && e.target.files[0]) {
+        processFile(e.target.files[0]);
+      }
+    });
+
+    // Input handlers
+    thresholdInput.addEventListener('input', (e) => {
+      thresholdVal.textContent = e.target.value;
+      if (loadedImage) processImage();
+    });
+
+    paddingInput.addEventListener('input', (e) => {
+      paddingVal.textContent = e.target.value + ' px';
+      if (loadedImage) processImage();
+    });
+
+    // Background color handlers
+    bgTransparent.addEventListener('click', () => setBgColor('transparent', bgTransparent));
+    bgWhite.addEventListener('click', () => setBgColor('white', bgWhite));
+    bgBlack.addEventListener('click', () => setBgColor('black', bgBlack));
+
+    function setBgColor(type, buttonEl) {
+      selectedBg = type;
+      [bgTransparent, bgWhite, bgBlack].forEach(btn => {
+        btn.classList.remove('bg-[#ff003c]', 'text-white', 'border-[#ff003c]');
+        btn.classList.add('bg-zinc-900', 'text-zinc-300', 'border-zinc-800');
+      });
+      buttonEl.classList.remove('bg-zinc-900', 'text-zinc-300', 'border-zinc-800');
+      buttonEl.classList.add('bg-[#ff003c]', 'text-white', 'border-[#ff003c]');
+      if (loadedImage) processImage();
+    }
+
+    // Process file upload
+    function processFile(file) {
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        loadedImage = new Image();
+        loadedImage.onload = function() {
+          imgSource.src = event.target.result;
+          imgSource.classList.remove('hidden');
+          imgPlaceholder.classList.add('hidden');
+          
+          outputCanvas.classList.remove('hidden');
+          canvasPlaceholder.classList.add('hidden');
+
+          // Enable Download Button
+          downloadBtn.disabled = false;
+          downloadBtn.classList.remove('bg-zinc-800', 'text-zinc-500', 'cursor-not-allowed');
+          downloadBtn.classList.add('bg-[#ff003c]', 'text-white', 'neon-border', 'hover:brightness-110', 'active:scale-[0.98]');
+
+          processImage();
+        };
+        loadedImage.src = event.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Heavy lifting: image processing on canvas
+    function processImage() {
+      if (!loadedImage) return;
+
+      const tempCanvas = document.createElement('canvas');
+      const tempCtx = tempCanvas.getContext('2d');
+      
+      const width = loadedImage.naturalWidth;
+      const height = loadedImage.naturalHeight;
+      
+      tempCanvas.width = width;
+      tempCanvas.height = height;
+      tempCtx.drawImage(loadedImage, 0, 0);
+
+      const imgData = tempCtx.getImageData(0, 0, width, height);
+      const data = imgData.data;
+
+      const threshold = parseInt(thresholdInput.value, 10);
+      const padding = parseInt(paddingInput.value, 10);
+
+      // Define bounding box limits
+      let minX = width;
+      let maxX = 0;
+      let minY = height;
+      let maxY = 0;
+      let foundVisiblePixels = false;
+
+      // Scan all pixels
+      for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+          const index = (y * width + x) * 4;
+          const alpha = data[index + 3];
+
+          if (alpha <= threshold) {
+            // Force fully transparent
+            data[index + 3] = 0;
+          } else {
+            // Found a pixel that is visible above the threshold
+            foundVisiblePixels = true;
+            if (x < minX) minX = x;
+            if (x > maxX) maxX = x;
+            if (y < minY) minY = y;
+            if (y > maxY) maxY = y;
+          }
+        }
+      }
+
+      // If no visible pixels are found, fall back to full image bounds
+      if (!foundVisiblePixels) {
+        minX = 0;
+        maxX = width - 1;
+        minY = 0;
+        maxY = height - 1;
+      }
+
+      // Calculate cropped size
+      const cropWidth = (maxX - minX) + 1;
+      const cropHeight = (maxY - minY) + 1;
+
+      // Final canvas bounds including padding
+      const finalWidth = cropWidth + (padding * 2);
+      const finalHeight = cropHeight + (padding * 2);
+
+      // Update output canvas size
+      outputCanvas.width = finalWidth;
+      outputCanvas.height = finalHeight;
+      const outCtx = outputCanvas.getContext('2d');
+
+      // Clear Canvas
+      outCtx.clearRect(0, 0, finalWidth, finalHeight);
+
+      // Apply background color if selected
+      if (selectedBg === 'white') {
+        outCtx.fillStyle = '#FFFFFF';
+        outCtx.fillRect(0, 0, finalWidth, finalHeight);
+      } else if (selectedBg === 'black') {
+        outCtx.fillStyle = '#000000';
+        outCtx.fillRect(0, 0, finalWidth, finalHeight);
+      }
+
+      // Put the cleaned cropped pixel data back
+      tempCtx.putImageData(imgData, 0, 0);
+
+      // Draw the cropped section onto the output canvas
+      outCtx.drawImage(
+        tempCanvas, 
+        minX, minY, cropWidth, cropHeight, // source rectangle
+        padding, padding, cropWidth, cropHeight // destination rectangle
+      );
+    }
+
+    // Download Trigger
+    downloadBtn.addEventListener('click', () => {
+      if (!loadedImage) return;
+
+      const link = document.createElement('a');
+      link.download = 'pokedex_logo_clean.png';
+      link.href = outputCanvas.toDataURL('image/png');
+      link.click();
+    });
+  </script>
+</body>
+</html>

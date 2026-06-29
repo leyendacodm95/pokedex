@@ -1,0 +1,35 @@
+com.smartpokedex.app-profileinstaller-1.3.0-0 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\0987eb9ed972d20e26c45cb9166f665e\transformed\profileinstaller-1.3.0\res
+com.smartpokedex.app-material-1.11.0-1 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\0b6aebd7eb1b73f9f46be841bb2ac203\transformed\material-1.11.0\res
+com.smartpokedex.app-appcompat-1.6.1-2 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\17380dc5cf77fd5df68ec0a9d5e03b28\transformed\appcompat-1.6.1\res
+com.smartpokedex.app-core-1.12.0-3 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\192c8e5d66030ba61b607c0ec72109a1\transformed\core-1.12.0\res
+com.smartpokedex.app-lifecycle-process-2.6.1-4 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\22e7cd3d280ade7bf94a451e6fccb3d8\transformed\lifecycle-process-2.6.1\res
+com.smartpokedex.app-core-ktx-1.12.0-5 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\2f1a2d696bcc32c33a9f78cceac4a58f\transformed\core-ktx-1.12.0\res
+com.smartpokedex.app-drawerlayout-1.1.1-6 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\3238f2d79658e6a19975c72e6cde0c46\transformed\drawerlayout-1.1.1\res
+com.smartpokedex.app-lifecycle-livedata-2.6.1-7 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\329e6854ee39685153365eff639ce84e\transformed\lifecycle-livedata-2.6.1\res
+com.smartpokedex.app-lifecycle-viewmodel-2.6.1-8 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\37188870d715939b84fb456e220fdf6a\transformed\lifecycle-viewmodel-2.6.1\res
+com.smartpokedex.app-activity-1.8.0-9 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\3925091f6a76085a47bd023b5a34d01c\transformed\activity-1.8.0\res
+com.smartpokedex.app-core-runtime-2.2.0-10 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\3f26624ce2878886b117f4fbcb119bbf\transformed\core-runtime-2.2.0\res
+com.smartpokedex.app-transition-1.2.0-11 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\4d53d41a14b90d699b26d9860c95436c\transformed\transition-1.2.0\res
+com.smartpokedex.app-fragment-1.3.6-12 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\50c2df60bc49c8a0ed257dc18a928dd2\transformed\fragment-1.3.6\res
+com.smartpokedex.app-viewpager2-1.0.0-13 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\53afb68c791f531a71cb67e43fd090c2\transformed\viewpager2-1.0.0\res
+com.smartpokedex.app-webkit-1.10.0-14 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\60c29e10ac57019fad7a52ae10269df4\transformed\webkit-1.10.0\res
+com.smartpokedex.app-lifecycle-viewmodel-savedstate-2.6.1-15 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\76e535087e340bf8fd94ac10776f0653\transformed\lifecycle-viewmodel-savedstate-2.6.1\res
+com.smartpokedex.app-annotation-experimental-1.3.0-16 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\860e3dacc44eb8a5a19dd9a03fdea0aa\transformed\annotation-experimental-1.3.0\res
+com.smartpokedex.app-coordinatorlayout-1.1.0-17 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\8d28237f5bb6a61ccdd19d9939c451c3\transformed\coordinatorlayout-1.1.0\res
+com.smartpokedex.app-recyclerview-1.1.0-18 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\a4fe9cfb9a93a95a4e32899332c155ad\transformed\recyclerview-1.1.0\res
+com.smartpokedex.app-startup-runtime-1.1.1-19 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\a59a4f1416471e8f9a819b8444fae087\transformed\startup-runtime-1.1.1\res
+com.smartpokedex.app-emoji2-1.2.0-20 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\bbe369d5f550b86c549dca50fd116690\transformed\emoji2-1.2.0\res
+com.smartpokedex.app-lifecycle-runtime-2.6.1-21 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\bc21bc2bb62f3f9d86845206000c319c\transformed\lifecycle-runtime-2.6.1\res
+com.smartpokedex.app-lifecycle-livedata-core-2.6.1-22 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\c44dcc37cb03ce1dad2d81d1b2e4738a\transformed\lifecycle-livedata-core-2.6.1\res
+com.smartpokedex.app-emoji2-views-helper-1.2.0-23 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\dc6bfbe9f11b26b09773216356523101\transformed\emoji2-views-helper-1.2.0\res
+com.smartpokedex.app-constraintlayout-2.0.1-24 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\df46f594e15ca65b423f94ca56d8e91b\transformed\constraintlayout-2.0.1\res
+com.smartpokedex.app-savedstate-1.2.1-25 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\eaafa17948f3399950eb5ec6bb02270f\transformed\savedstate-1.2.1\res
+com.smartpokedex.app-appcompat-resources-1.6.1-26 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\f55f0b53d220d971af42d0063de0fec8\transformed\appcompat-resources-1.6.1\res
+com.smartpokedex.app-cardview-1.0.0-27 C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\fdf9efc3ba823f74509f08f51ce37fe9\transformed\cardview-1.0.0\res
+com.smartpokedex.app-pngs-28 C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\build\generated\res\pngs\debug
+com.smartpokedex.app-resValues-29 C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\build\generated\res\resValues\debug
+com.smartpokedex.app-packageDebugResources-30 C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.smartpokedex.app-packageDebugResources-31 C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.smartpokedex.app-merged_res-32 C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\build\intermediates\merged_res\debug
+com.smartpokedex.app-debug-33 C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\debug\res
+com.smartpokedex.app-main-34 C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\res

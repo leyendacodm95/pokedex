@@ -1,0 +1,157 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.smartpokedex.app"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="24"
+9        android:targetSdkVersion="34" />
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:5:5-67
+11-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:5:22-64
+12    <uses-permission android:name="android.permission.CAMERA" />
+12-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:6:5-65
+12-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:6:22-62
+13    <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- Sometimes required by WebView for WebRTC -->
+13-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:7:5-71
+13-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:7:22-68
+14    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+14-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:8:5-80
+14-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:8:22-77
+15
+16    <uses-feature
+16-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:10:5-84
+17        android:name="android.hardware.camera"
+17-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:10:19-57
+18        android:required="true" />
+18-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:10:58-81
+19    <uses-feature
+19-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:11:5-95
+20        android:name="android.hardware.camera.autofocus"
+20-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:11:19-67
+21        android:required="false" />
+21-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:11:68-92
+22
+23    <permission
+23-->[androidx.core:core:1.12.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\192c8e5d66030ba61b607c0ec72109a1\transformed\core-1.12.0\AndroidManifest.xml:22:5-24:47
+24        android:name="com.smartpokedex.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+24-->[androidx.core:core:1.12.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\192c8e5d66030ba61b607c0ec72109a1\transformed\core-1.12.0\AndroidManifest.xml:23:9-81
+25        android:protectionLevel="signature" />
+25-->[androidx.core:core:1.12.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\192c8e5d66030ba61b607c0ec72109a1\transformed\core-1.12.0\AndroidManifest.xml:24:9-44
+26
+27    <uses-permission android:name="com.smartpokedex.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+27-->[androidx.core:core:1.12.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\192c8e5d66030ba61b607c0ec72109a1\transformed\core-1.12.0\AndroidManifest.xml:26:5-97
+27-->[androidx.core:core:1.12.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\192c8e5d66030ba61b607c0ec72109a1\transformed\core-1.12.0\AndroidManifest.xml:26:22-94
+28
+29    <application
+29-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:13:5-32:19
+30        android:allowBackup="true"
+30-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:14:9-35
+31        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+31-->[androidx.core:core:1.12.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\192c8e5d66030ba61b607c0ec72109a1\transformed\core-1.12.0\AndroidManifest.xml:28:18-86
+32        android:debuggable="true"
+33        android:extractNativeLibs="false"
+34        android:icon="@android:drawable/sym_def_app_icon"
+34-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:15:9-58
+35        android:label="@string/app_name"
+35-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:16:9-41
+36        android:supportsRtl="true"
+36-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:17:9-35
+37        android:theme="@style/Theme.SmartPokedex"
+37-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:18:9-50
+38        android:usesCleartextTraffic="true" >
+38-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:19:9-44
+39        <activity
+39-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:21:9-31:20
+40            android:name="com.smartpokedex.app.MainActivity"
+40-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:22:13-41
+41            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|uiMode"
+41-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:24:13-97
+42            android:exported="true"
+42-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:23:13-36
+43            android:launchMode="singleTop"
+43-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:25:13-43
+44            android:theme="@style/Theme.SmartPokedex.NoActionBar" >
+44-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:26:13-66
+45            <intent-filter>
+45-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:27:13-30:29
+46                <action android:name="android.intent.action.MAIN" />
+46-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:28:17-69
+46-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:28:25-66
+47
+48                <category android:name="android.intent.category.LAUNCHER" />
+48-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:29:17-77
+48-->C:\Users\TOSHIBA\Desktop\pokedex uwushuwu\stitch_smart_pok_dex_scanner\android_native_app\app\src\main\AndroidManifest.xml:29:27-74
+49            </intent-filter>
+50        </activity>
+51
+52        <provider
+52-->[androidx.emoji2:emoji2:1.2.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\bbe369d5f550b86c549dca50fd116690\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+53            android:name="androidx.startup.InitializationProvider"
+53-->[androidx.emoji2:emoji2:1.2.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\bbe369d5f550b86c549dca50fd116690\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
+54            android:authorities="com.smartpokedex.app.androidx-startup"
+54-->[androidx.emoji2:emoji2:1.2.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\bbe369d5f550b86c549dca50fd116690\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
+55            android:exported="false" >
+55-->[androidx.emoji2:emoji2:1.2.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\bbe369d5f550b86c549dca50fd116690\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
+56            <meta-data
+56-->[androidx.emoji2:emoji2:1.2.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\bbe369d5f550b86c549dca50fd116690\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+57                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+57-->[androidx.emoji2:emoji2:1.2.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\bbe369d5f550b86c549dca50fd116690\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
+58                android:value="androidx.startup" />
+58-->[androidx.emoji2:emoji2:1.2.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\bbe369d5f550b86c549dca50fd116690\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
+59            <meta-data
+59-->[androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\22e7cd3d280ade7bf94a451e6fccb3d8\transformed\lifecycle-process-2.6.1\AndroidManifest.xml:29:13-31:52
+60                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+60-->[androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\22e7cd3d280ade7bf94a451e6fccb3d8\transformed\lifecycle-process-2.6.1\AndroidManifest.xml:30:17-78
+61                android:value="androidx.startup" />
+61-->[androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\22e7cd3d280ade7bf94a451e6fccb3d8\transformed\lifecycle-process-2.6.1\AndroidManifest.xml:31:17-49
+62            <meta-data
+62-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\0987eb9ed972d20e26c45cb9166f665e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
+63                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+63-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\0987eb9ed972d20e26c45cb9166f665e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
+64                android:value="androidx.startup" />
+64-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\0987eb9ed972d20e26c45cb9166f665e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
+65        </provider>
+66
+67        <receiver
+67-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\0987eb9ed972d20e26c45cb9166f665e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
+68            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+68-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\0987eb9ed972d20e26c45cb9166f665e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
+69            android:directBootAware="false"
+69-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\0987eb9ed972d20e26c45cb9166f665e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
+70            android:enabled="true"
+70-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\0987eb9ed972d20e26c45cb9166f665e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
+71            android:exported="true"
+71-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\0987eb9ed972d20e26c45cb9166f665e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
+72            android:permission="android.permission.DUMP" >
+72-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\0987eb9ed972d20e26c45cb9166f665e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
+73            <intent-filter>
+73-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\0987eb9ed972d20e26c45cb9166f665e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
+74                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+74-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\0987eb9ed972d20e26c45cb9166f665e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
+74-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\0987eb9ed972d20e26c45cb9166f665e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
+75            </intent-filter>
+76            <intent-filter>
+76-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\0987eb9ed972d20e26c45cb9166f665e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
+77                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+77-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\0987eb9ed972d20e26c45cb9166f665e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
+77-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\0987eb9ed972d20e26c45cb9166f665e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
+78            </intent-filter>
+79            <intent-filter>
+79-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\0987eb9ed972d20e26c45cb9166f665e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
+80                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+80-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\0987eb9ed972d20e26c45cb9166f665e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
+80-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\0987eb9ed972d20e26c45cb9166f665e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
+81            </intent-filter>
+82            <intent-filter>
+82-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\0987eb9ed972d20e26c45cb9166f665e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
+83                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+83-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\0987eb9ed972d20e26c45cb9166f665e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
+83-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\TOSHIBA\.gradle\caches\9.0-milestone-1\transforms\0987eb9ed972d20e26c45cb9166f665e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
+84            </intent-filter>
+85        </receiver>
+86    </application>
+87
+88</manifest>

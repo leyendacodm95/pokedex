@@ -1,0 +1,6 @@
+{
+  "appId": "com.smartpokedex.app",
+  "appName": "Smart Pokédex",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}

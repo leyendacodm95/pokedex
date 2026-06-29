@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PokéScan - My Pokédex</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=Space+Grotesk:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#c00100",
+                    "surface-container": "#201f1f",
+                    "on-primary": "#690100",
+                    "secondary-fixed": "#00fbfb",
+                    "on-tertiary-container": "#2a2a2a",
+                    "on-secondary-container": "#007070",
+                    "tertiary-container": "#929090",
+                    "on-secondary-fixed-variant": "#004f4f",
+                    "tertiary": "#c8c6c5",
+                    "on-primary-container": "#5c0000",
+                    "background": "#131313",
+                    "on-background": "#e5e2e1",
+                    "outline": "#b18780",
+                    "secondary": "#ffffff",
+                    "tertiary-fixed": "#e5e2e1",
+                    "surface-tint": "#ffb4a8",
+                    "secondary-fixed-dim": "#00dddd",
+                    "surface-container-low": "#1c1b1b",
+                    "surface-container-high": "#2a2a2a",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary": "#003737",
+                    "surface-dim": "#131313",
+                    "primary": "#ffb4a8",
+                    "primary-container": "#ff5540",
+                    "surface-container-highest": "#353534",
+                    "secondary-container": "#00fbfb",
+                    "primary-fixed": "#ffdad4",
+                    "on-tertiary": "#303030",
+                    "on-surface": "#e5e2e1",
+                    "inverse-surface": "#e5e2e1",
+                    "on-tertiary-fixed-variant": "#474746",
+                    "on-primary-fixed-variant": "#930100",
+                    "on-secondary-fixed": "#002020",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "inverse-on-surface": "#313030",
+                    "on-error": "#690005",
+                    "surface": "#131313",
+                    "on-tertiary-fixed": "#1b1b1c",
+                    "on-surface-variant": "#ebbbb4",
+                    "on-primary-fixed": "#410000",
+                    "surface-variant": "#353534",
+                    "surface-bright": "#393939",
+                    "error": "#ffb4ab",
+                    "error-container": "#93000a",
+                    "primary-fixed-dim": "#ffb4a8",
+                    "outline-variant": "#603e39",
+                    "surface-container-lowest": "#0e0e0e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "unit": "4px",
+                    "stack-md": "24px",
+                    "stack-lg": "40px",
+                    "gutter-md": "16px",
+                    "stack-sm": "8px"
+            },
+            "fontFamily": {
+                    "data-num": ["Space Grotesk"],
+                    "body-lg": ["Inter"],
+                    "label-caps": ["Space Grotesk"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"]
+            },
+            "fontSize": {
+                    "data-num": ["18px", {"lineHeight": "24px", "fontWeight": "500"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #121212;
+            color: #e5e2e1;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-search {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .glass-search:focus-within {
+            border-color: #00fbfb;
+            box-shadow: 0 0 15px rgba(0, 251, 251, 0.2);
+        }
+        .pokemon-card-glow:active {
+            transform: scale(0.98);
+            transition: transform 0.15s ease;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="font-body-md text-on-surface antialiased">
+<!-- Background Shader -->
+<div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+
+</div>
+<!-- Top App Bar -->
+<header class="sticky top-0 z-50 bg-white/10 dark:bg-white/8 backdrop-blur-xl border-b border-white/10 shadow-lg px-margin-mobile py-unit">
+<div class="flex justify-between items-center w-full max-w-7xl mx-auto h-16">
+<h1 class="font-headline-md text-headline-md font-bold text-secondary-container dark:text-secondary-fixed">PokéScan</h1>
+<div class="flex gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-white/5 transition-colors rounded-full active:scale-95 transition-transform">
+<span class="material-symbols-outlined">language</span>
+</button>
+</div>
+</div>
+</header>
+<main class="px-margin-mobile pb-32 max-w-7xl mx-auto">
+<!-- Global Glassmorphic Search Bar -->
+<div class="mt-stack-md">
+<div class="glass-search rounded-full px-4 h-12 flex items-center transition-all duration-300">
+<span class="material-symbols-outlined text-secondary-container mr-3">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-on-surface placeholder:text-on-surface-variant/50 font-body-md" placeholder="Search your collection..." type="text"/>
+</div>
+</div>
+<!-- Collection Summary -->
+<div class="mt-stack-md flex justify-between items-baseline">
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Pokémon Registrados: 12</p>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">filter_list</span>
+</div>
+<!-- History Grid -->
+<div class="mt-stack-md grid grid-cols-2 gap-4">
+<!-- Card 1 -->
+<div class="glass-panel rounded-xl p-3 pokemon-card-glow flex flex-col items-center">
+<div class="relative w-full aspect-square bg-white/5 rounded-lg overflow-hidden mb-3">
+<img class="w-full h-full object-contain p-2" data-alt="A 3D render of a futuristic Charizard Pokémon, styled as a glowing digital projection with holographic scan lines. The lighting is deep red and cyan, highlighting mechanical details against a dark minimalist tech background. High-tech smart Pokédex aesthetic with premium gloss finish." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPea0r-6CEjvOYpRThy8GAfGRJYnOKmP3Gn3Dtu9x5GdyKycBAuekbCYDAW7F5omcM7lzmFUH4srW4QIw3yHspWDJCmCvwJjs1KEaQagJyzIyfEkmqNIAXjw7ss8T58FN4SAFH-A_5j8GUnGWDVbZT4lRDbeR33Yq6H7p8T9lyHnWTVjTNnLKKUUPQKH4uUODzl3lztGcqIga6Ux5ZUeBtg6Tle2y_zt5gAD3O3EGESX91nFetdtVYYvcTCYBtK4RSToEtx-H1QpXy"/>
+</div>
+<div class="w-full">
+<h3 class="font-headline-md text-[16px] leading-tight text-on-surface truncate">Charizard</h3>
+<div class="flex items-center mt-1">
+<span class="material-symbols-outlined text-[14px] text-secondary-container mr-1">calendar_today</span>
+<p class="font-label-caps text-[10px] text-on-surface-variant">12 Oct 2023</p>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-panel rounded-xl p-3 pokemon-card-glow flex flex-col items-center">
+<div class="relative w-full aspect-square bg-white/5 rounded-lg overflow-hidden mb-3">
+<img class="w-full h-full object-contain p-2" data-alt="A technical data-rich render of Lucario standing in a tactical research lab setting. The Pokémon is illuminated by soft blue emissive lights from the ground, creating a high-contrast shadow. The style is ultra-modern, mimicking a high-end portable research device's display, featuring vibrant background blurs." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBi2X_acVbzm4GYB7bpDpy9G_97j6_YhoHrCD2B8PqyXfn_E6ZhkzXs0ql35G8KfDVedE693ogUcNmmaQrlpGQwuCfXbD_AB4S6hdfQHhPO90aMI26gJhg0iEIcUvMHGO6QVeUQzym4sjPRI4CQ6wFOnT13Cocubalu06efSawrm83M7Q5Z2DBs43ucFEaF30aUSnZNOHMmYT1TspVodUxaIv6RKLdnyhQuFNqtEgi2aYaBlETh-SclXrQR18-OaYIvuSNhj4FlB3-R"/>
+</div>
+<div class="w-full">
+<h3 class="font-headline-md text-[16px] leading-tight text-on-surface truncate">Lucario</h3>
+<div class="flex items-center mt-1">
+<span class="material-symbols-outlined text-[14px] text-secondary-container mr-1">calendar_today</span>
+<p class="font-label-caps text-[10px] text-on-surface-variant">10 Oct 2023</p>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="glass-panel rounded-xl p-3 pokemon-card-glow flex flex-col items-center">
+<div class="relative w-full aspect-square bg-white/5 rounded-lg overflow-hidden mb-3">
+<img class="w-full h-full object-contain p-2" data-alt="A stylized holographic Garchomp rendered as part of a digital encyclopedia. The lighting is electric yellow and deep grey, simulating a piece of advanced tactical equipment. Translucent layers and 20px backdrop blurs suggest light projected onto glass in a dark laboratory environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR4kbu8oiYNc_ofXx5GLIJv3eT2n0V3Qufnk6wgJxU40N4ZfgnJauoA2RYVqdaSUbBIHrvcvFim9_I9ZcmqIhKBEh11ENoC1usqc_-bjBGLgpG_3z8wT0IRfgBLdy-qYfSv31fRmtjjhP3n3TGnWsU89DEVvB1q4N3kFBwZTHPh0AnLKWr6TreEz-WVwDJvAA80jbzi1F9mNiL_rZxUwJTNrKViFuzqfTEhIi6GcvrJlw3bSjEgjqiwUc5pPSJGnTbSpByIBg2UPMh"/>
+</div>
+<div class="w-full">
+<h3 class="font-headline-md text-[16px] leading-tight text-on-surface truncate">Garchomp</h3>
+<div class="flex items-center mt-1">
+<span class="material-symbols-outlined text-[14px] text-secondary-container mr-1">calendar_today</span>
+<p class="font-label-caps text-[10px] text-on-surface-variant">05 Oct 2023</p>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="glass-panel rounded-xl p-3 pokemon-card-glow flex flex-col items-center">
+<div class="relative w-full aspect-square bg-white/5 rounded-lg overflow-hidden mb-3">
+<img class="w-full h-full object-contain p-2" data-alt="A sleek, neon-lit rendering of Gardevoir within a smart Pokédex interface. Soft magenta and cyan glow surrounds the subject, reflecting off a dark glass-like floor. The image conveys discovery and technical sophistication, featuring a fluid vertical organization of data and premium research tool aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2aRQjPtVANffR8tIoiFGxlGSzdsF0RBvmCx1LkUxqHTvVkYzrWed2TsENaXZRBy9K2sI09_BmbjUk40nR5cyWIop81sDuitCZSvVpTXSDoGquUYXETF33w5XPeRG7wAOgNVNVymSSGnisCE4-VS7WP8oVk6xmrCrEaHHFlgAWY2T-YE4aLH7oW3aQ2H1ZK7Sbq_qorHmj8RQCj-ehlFLouSsuuQHw2IKGhvGxnQK-af1A3IYt7MG4VVUcCrdqTYJIvSoP_HtUZv7N"/>
+</div>
+<div class="w-full">
+<h3 class="font-headline-md text-[16px] leading-tight text-on-surface truncate">Gardevoir</h3>
+<div class="flex items-center mt-1">
+<span class="material-symbols-outlined text-[14px] text-secondary-container mr-1">calendar_today</span>
+<p class="font-label-caps text-[10px] text-on-surface-variant">02 Oct 2023</p>
+</div>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="glass-panel rounded-xl p-3 pokemon-card-glow flex flex-col items-center">
+<div class="relative w-full aspect-square bg-white/5 rounded-lg overflow-hidden mb-3">
+<img class="w-full h-full object-contain p-2" data-alt="Digital research display showing a Rayquaza with glowing green energy veins. The visual style is near-future laboratory gear, utilizing high-contrast environments and emissive display effects. Every detail feels like tactical data, presented on a semi-transparent glass panel with a 1px internal border." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTdKyL8rc_2j08NOIqOm8Z26lZPySvwARUKZ0XEbHQ4eSS6vaAkVmvprPp90It_eap5HBfR3EmIB5bIzvNwDdzMc0-mNTKYnvD6wa5py-f3zo1DzIKI5LMP9u6kGI0ZUcyXhKsRxBrIyco8REdw0UpMOqWGbZ0AtmVB0JCjNe-lMBwR_W6t-jKtFmHY_jSA67PNhahdd3VufNGeXXQE08JxBqsMP4xt-5A2Tn9sq12wf3_VPcnMOe-3U_y64ChyPygdPWU5Vpjm02M"/>
+</div>
+<div class="w-full">
+<h3 class="font-headline-md text-[16px] leading-tight text-on-surface truncate">Rayquaza</h3>
+<div class="flex items-center mt-1">
+<span class="material-symbols-outlined text-[14px] text-secondary-container mr-1">calendar_today</span>
+<p class="font-label-caps text-[10px] text-on-surface-variant">28 Sep 2023</p>
+</div>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="glass-panel rounded-xl p-3 pokemon-card-glow flex flex-col items-center">
+<div class="relative w-full aspect-square bg-white/5 rounded-lg overflow-hidden mb-3">
+<img class="w-full h-full object-contain p-2" data-alt="A professional 3D render of Gengar emerging from a purple digital mist. The lighting is spooky yet high-tech, using vibrant background blurs and holographic overlays. The subject glows against the deep dark Level 0 background, appearing as if light is being projected through translucent glass." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEbKsiIU5eji6u9cIoA8VwzAzo53xE8UTrYy8ikNWP_a9bOhtKV9DOrjyuelZhN5phq2kdv1aSOSMTLfx4kEhU8Lg7uc_9ROur_6AHWSWehvGIVPa7oMmnWXHvFbpYp_7PPbVtsHg5DTWFa7-ESDVLQopfQmab3eqgl9fNrw4yLQleIr1ri13KdvkiMOTy5FztRCy5PKVdkkNsd-PfTqJtDeb_PaF2fA7iaEccaczugIaWtUAh4ADOMKm76N3QnS2YMbb2vCLvfjKD"/>
+</div>
+<div class="w-full">
+<h3 class="font-headline-md text-[16px] leading-tight text-on-surface truncate">Gengar</h3>
+<div class="flex items-center mt-1">
+<span class="material-symbols-outlined text-[14px] text-secondary-container mr-1">calendar_today</span>
+<p class="font-label-caps text-[10px] text-on-surface-variant">25 Sep 2023</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 bg-white/8 dark:bg-white/8 backdrop-blur-2xl border-t border-white/10 shadow-[0px_-10px_30px_rgba(0,0,0,0.5)] rounded-t-xl">
+<!-- Scanner Item -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 hover:bg-white/5 py-3 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined mb-1">document_scanner</span>
+<span class="font-label-caps text-label-caps uppercase">Scanner</span>
+</a>
+<!-- Collection (Active) Item -->
+<a class="flex flex-col items-center justify-center text-secondary-container dark:text-secondary-fixed after:content-[''] after:w-1 after:h-1 after:bg-secondary-container after:rounded-full after:mt-1 py-3 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-label-caps text-label-caps uppercase">Collection</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for cards
+        document.querySelectorAll('.pokemon-card-glow').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.borderColor = 'rgba(0, 251, 251, 0.4)';
+                card.style.boxShadow = '0 0 20px rgba(0, 251, 251, 0.1)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                card.style.boxShadow = 'none';
+            });
+        });
+
+        // Search bar focus effect
+        const searchInput = document.querySelector('input');
+        const searchContainer = document.querySelector('.glass-search');
+        searchInput.addEventListener('focus', () => {
+            searchContainer.classList.add('scale-[1.02]');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchContainer.classList.remove('scale-[1.02]');
+        });
+    </script>
+</body></html>

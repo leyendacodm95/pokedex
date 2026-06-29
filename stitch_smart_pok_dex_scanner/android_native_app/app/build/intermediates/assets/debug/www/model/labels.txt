@@ -1,0 +1,3 @@
+0 Bulbasaur
+1 Charizard
+2 Fondo

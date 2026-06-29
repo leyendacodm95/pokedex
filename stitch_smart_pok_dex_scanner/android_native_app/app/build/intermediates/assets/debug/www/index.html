@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Smart Pokédex</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Space+Grotesk:wght@500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+      }
+      body {
+        background-color: #121212;
+        color: #e5e2e1;
+        min-height: max(884px, 100dvh);
+        -webkit-tap-highlight-color: transparent;
+      }
+      /* Scanner Animation */
+      @keyframes scan-pulse {
+        0%, 100% { opacity: 0.5; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.02); }
+      }
+      .scanner-frame-animate {
+        animation: scan-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      .holographic-glow {
+        box-shadow: 0px 0px 15px rgba(0, 251, 251, 0.3);
+      }
+    </style>
+    <script type="module" crossorigin src="./assets/index-CBuNYvwZ.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DDjRf9Qc.css">
+  </head>
+  <body class="bg-background text-on-background min-h-screen overflow-hidden font-body-md select-none">
+    <div id="root" class="h-full"></div>
+    <!-- TensorFlow.js and TFLite loaded via CDN to prevent Vite bundler errors -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core@4.9.0/dist/tf-core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm@4.9.0/dist/tf-backend-wasm.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-tflite@0.0.1-alpha.9/dist/tf-tflite.min.js"></script>
+  </body>
+</html>

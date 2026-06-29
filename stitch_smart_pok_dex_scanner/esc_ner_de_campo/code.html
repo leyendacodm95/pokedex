@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Space+Grotesk:wght@500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Grotesk:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-modal {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+        }
+        @keyframes scan-pulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.02); }
+        }
+        .scanner-frame-animate {
+            animation: scan-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .holographic-glow {
+            box-shadow: 0px 0px 15px rgba(0, 251, 251, 0.3);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#c00100",
+                        "surface-container": "#201f1f",
+                        "on-primary": "#690100",
+                        "secondary-fixed": "#00fbfb",
+                        "on-tertiary-container": "#2a2a2a",
+                        "on-secondary-container": "#007070",
+                        "tertiary-container": "#929090",
+                        "on-secondary-fixed-variant": "#004f4f",
+                        "tertiary": "#c8c6c5",
+                        "on-primary-container": "#5c0000",
+                        "background": "#131313",
+                        "on-background": "#e5e2e1",
+                        "outline": "#b18780",
+                        "secondary": "#ffffff",
+                        "tertiary-fixed": "#e5e2e1",
+                        "surface-tint": "#ffb4a8",
+                        "secondary-fixed-dim": "#00dddd",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-container-high": "#2a2a2a",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary": "#003737",
+                        "surface-dim": "#131313",
+                        "primary": "#ffb4a8",
+                        "primary-container": "#ff5540",
+                        "surface-container-highest": "#353534",
+                        "secondary-container": "#00fbfb",
+                        "primary-fixed": "#ffdad4",
+                        "on-tertiary": "#303030",
+                        "on-surface": "#e5e2e1",
+                        "inverse-surface": "#e5e2e1",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "on-primary-fixed-variant": "#930100",
+                        "on-secondary-fixed": "#002020",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "inverse-on-surface": "#313030",
+                        "on-error": "#690005",
+                        "surface": "#131313",
+                        "on-tertiary-fixed": "#1b1b1c",
+                        "on-surface-variant": "#ebbbb4",
+                        "on-primary-fixed": "#410000",
+                        "surface-variant": "#353534",
+                        "surface-bright": "#393939",
+                        "error": "#ffb4ab",
+                        "error-container": "#93000a",
+                        "primary-fixed-dim": "#ffb4a8",
+                        "outline-variant": "#603e39",
+                        "surface-container-lowest": "#0e0e0e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "unit": "4px",
+                        "stack-md": "24px",
+                        "stack-lg": "40px",
+                        "gutter-md": "16px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "data-num": ["Space Grotesk"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Space Grotesk"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "data-num": ["18px", {"lineHeight": "24px", "fontWeight": "500"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen overflow-hidden font-body-md select-none">
+<!-- Live Camera Feed Simulation -->
+<div class="fixed inset-0 z-0">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700" data-alt="A cinematic, high-definition live-action environment showing a lush green meadow in the Kanto region. A wild Pikachu is partially visible through tall grass, caught in a natural pose under bright afternoon sunlight. The camera has a subtle digital noise and chromatic aberration effect to simulate a high-tech portable scanner viewfinder. The overall mood is immersive and adventurous, with deep greens and golden light." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBygvZII9vurqxWJsxF-pGgL9m_FjdbZyk2nIQTv9KG_nEOQQqOkuh-XgIOBJBjx7ZTARj6rT7FHhw6VwliXHSCHKO1loq7-IghsZ9QLYtZEu3TNIqLrjLSWFIiZExS0t7cMf2pGuIHoh_-In-0URM_lHO37xMYUk9l4PNz-YT7Q6BmYNi5Rkb6HR9h9i7LwsHfGaHBeRAPQe-T_vxy6hXcliRJvfDEYBWD7_IsoP-JzJhUwD_9YV_04lAXEtEsBTyGpwX9oPzkkkdi')"></div>
+<!-- Digital Overlay Mask -->
+<div class="absolute inset-0 bg-black/20 backdrop-grayscale-[0.2]"></div>
+</div>
+<!-- Top Navigation / Search -->
+<header class="fixed top-0 left-0 w-full z-30 px-margin-mobile pt-stack-md flex flex-col gap-unit">
+<div class="flex justify-between items-center w-full max-w-7xl mx-auto py-unit">
+<span class="font-headline-md text-headline-md font-bold text-secondary-container dark:text-secondary-fixed">PokéScan</span>
+<div class="flex items-center gap-4">
+<div class="p-2 glass-panel rounded-full hover:bg-white/5 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-secondary-fixed">language</span>
+</div>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="w-full max-w-xl mx-auto mt-4">
+<div class="glass-panel flex items-center px-4 py-3 rounded-full border border-white/10 group transition-all duration-300 focus-within:border-secondary-fixed focus-within:shadow-[0_0_15px_rgba(0,251,251,0.2)]">
+<span class="material-symbols-outlined text-secondary-fixed mr-3">search</span>
+<input class="bg-transparent border-none outline-none text-on-surface w-full font-body-md placeholder:text-on-surface-variant/40 placeholder:font-light focus:ring-0" placeholder="Buscar en la red Pokémon (ej. stats, evoluciones)..." type="text"/>
+<span class="material-symbols-outlined text-secondary-fixed/50 ml-2 text-sm">public</span>
+</div>
+</div>
+</header>
+<!-- Scanner UI Overlay -->
+<main class="relative z-10 flex flex-col items-center justify-center min-h-screen pointer-events-none">
+<!-- Holographic Focus Frame -->
+<div class="relative w-72 h-72 md:w-96 md:h-96 scanner-frame-animate">
+<!-- Corners -->
+<div class="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-secondary-fixed rounded-tl-xl holographic-glow"></div>
+<div class="absolute top-0 right-0 w-12 h-12 border-t-2 border-r-2 border-secondary-fixed rounded-tr-xl holographic-glow"></div>
+<div class="absolute bottom-0 left-0 w-12 h-12 border-b-2 border-l-2 border-secondary-fixed rounded-bl-xl holographic-glow"></div>
+<div class="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-secondary-fixed rounded-br-xl holographic-glow"></div>
+<!-- Scanning Line (Animated CSS) -->
+<div class="absolute top-0 left-4 right-4 h-[1px] bg-secondary-fixed opacity-50 shadow-[0_0_10px_#00fbfb]" id="scan-line"></div>
+<!-- Technical Data Dots -->
+<div class="absolute -top-8 -left-4 text-[10px] font-data-num text-secondary-fixed/70 uppercase">Tracking Active</div>
+<div class="absolute -bottom-8 -right-4 text-[10px] font-data-num text-secondary-fixed/70 uppercase">ID-7492-PKMN</div>
+</div>
+</main>
+<!-- Bottom Action Panel -->
+<section class="fixed bottom-0 left-0 w-full z-40">
+<!-- Guidance and Main Action -->
+<div class="flex flex-col items-center pb-32">
+<p class="text-secondary-fixed text-label-caps font-label-caps mb-6 bg-black/40 px-4 py-1 rounded-full backdrop-blur-md border border-secondary-fixed/20">
+                Apunta al Pokémon para identificarlo
+            </p>
+<!-- Primary Scan Button -->
+<button class="relative group active:scale-95 transition-transform duration-200 pointer-events-auto">
+<!-- Button Glow Effect -->
+<div class="absolute inset-0 bg-[#FF0000] rounded-full blur-xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
+<div class="relative w-24 h-24 bg-gradient-to-b from-[#ff3c3c] to-[#FF0000] rounded-full flex items-center justify-center shadow-2xl border-4 border-white/20">
+<span class="material-symbols-outlined text-white text-4xl" data-weight="fill">document_scanner</span>
+</div>
+</button>
+</div>
+<!-- Shared Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 w-full z-50 glass-modal border-t border-white/10 px-4 pb-8 pt-4 flex justify-around items-center rounded-t-xl shadow-[0px_-10px_30px_rgba(0,0,0,0.5)]">
+<!-- Active Tab: Scanner -->
+<div class="flex flex-col items-center justify-center text-secondary-container dark:text-secondary-fixed after:content-[''] after:w-1 after:h-1 after:bg-secondary-container after:rounded-full after:mt-1 cursor-pointer transition-transform active:scale-90">
+<span class="material-symbols-outlined" data-weight="fill">document_scanner</span>
+<span class="font-label-caps text-label-caps mt-1">Scanner</span>
+</div>
+<!-- Inactive Tab: Collection -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 hover:opacity-100 hover:bg-white/5 p-2 rounded-xl transition-all cursor-pointer active:scale-90">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-caps text-label-caps mt-1">My Pokédex</span>
+</div>
+</nav>
+</section>
+<!-- Scanning Line Animation Script -->
+<script>
+        const scanLine = document.getElementById('scan-line');
+        let position = 0;
+        let direction = 1;
+        const speed = 1.5;
+        const height = 384; // Matches the w-96 (24rem = 384px) at desktop size
+
+        function animateScan() {
+            position += direction * speed;
+            if (position >= height || position <= 0) {
+                direction *= -1;
+            }
+            scanLine.style.top = `${position}px`;
+            requestAnimationFrame(animateScan);
+        }
+
+        animateScan();
+
+        // Simulate micro-interactions
+        document.querySelectorAll('button, .cursor-pointer').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                const audio = new Audio('https://www.soundjay.com/buttons/sounds/button-37a.mp3');
+                audio.volume = 0.1;
+                // audio.play(); // Muted by default to avoid annoyance
+            });
+        });
+    </script>
+</body></html>

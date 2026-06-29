@@ -1,0 +1,6 @@
+R_DEF: Internal format may change without notice
+local
+string app_name
+style Base.Theme.SmartPokedex
+style Theme.SmartPokedex
+style Theme.SmartPokedex.NoActionBar

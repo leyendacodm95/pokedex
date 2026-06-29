@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Smart Pokédex</string>
+    <style name="Base.Theme.SmartPokedex" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:statusBarColor">#121212</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:navigationBarColor">#121212</item>
+    </style>
+    <style name="Theme.SmartPokedex" parent="Base.Theme.SmartPokedex"/>
+    <style name="Theme.SmartPokedex.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+</resources>

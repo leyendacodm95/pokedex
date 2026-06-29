@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PokéScan - Result Card</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=Space+Grotesk:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#c00100",
+                    "surface-container": "#201f1f",
+                    "on-primary": "#690100",
+                    "secondary-fixed": "#00fbfb",
+                    "on-tertiary-container": "#2a2a2a",
+                    "on-secondary-container": "#007070",
+                    "tertiary-container": "#929090",
+                    "on-secondary-fixed-variant": "#004f4f",
+                    "tertiary": "#c8c6c5",
+                    "on-primary-container": "#5c0000",
+                    "background": "#131313",
+                    "on-background": "#e5e2e1",
+                    "outline": "#b18780",
+                    "secondary": "#ffffff",
+                    "tertiary-fixed": "#e5e2e1",
+                    "surface-tint": "#ffb4a8",
+                    "secondary-fixed-dim": "#00dddd",
+                    "surface-container-low": "#1c1b1b",
+                    "surface-container-high": "#2a2a2a",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary": "#003737",
+                    "surface-dim": "#131313",
+                    "primary": "#ffb4a8",
+                    "primary-container": "#ff5540",
+                    "surface-container-highest": "#353534",
+                    "secondary-container": "#00fbfb",
+                    "primary-fixed": "#ffdad4",
+                    "on-tertiary": "#303030",
+                    "on-surface": "#e5e2e1",
+                    "inverse-surface": "#e5e2e1",
+                    "on-tertiary-fixed-variant": "#474746",
+                    "on-primary-fixed-variant": "#930100",
+                    "on-secondary-fixed": "#002020",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "inverse-on-surface": "#313030",
+                    "on-error": "#690005",
+                    "surface": "#131313",
+                    "on-tertiary-fixed": "#1b1b1c",
+                    "on-surface-variant": "#ebbbb4",
+                    "on-primary-fixed": "#410000",
+                    "surface-variant": "#353534",
+                    "surface-bright": "#393939",
+                    "error": "#ffb4ab",
+                    "error-container": "#93000a",
+                    "primary-fixed-dim": "#ffb4a8",
+                    "outline-variant": "#603e39",
+                    "surface-container-lowest": "#0e0e0e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "unit": "4px",
+                    "stack-md": "24px",
+                    "stack-lg": "40px",
+                    "gutter-md": "16px",
+                    "stack-sm": "8px"
+            },
+            "fontFamily": {
+                    "data-num": ["Space Grotesk"],
+                    "body-lg": ["Inter"],
+                    "label-caps": ["Space Grotesk"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"]
+            },
+            "fontSize": {
+                    "data-num": ["18px", {"lineHeight": "24px", "fontWeight": "500"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #121212;
+            color: #e5e2e1;
+            overflow: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-modal {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.5);
+        }
+        .holographic-glow {
+            box-shadow: 0px 0px 15px rgba(0, 251, 251, 0.3);
+        }
+        .scanner-frame {
+            border: 2px solid rgba(0, 251, 251, 0.5);
+            position: relative;
+        }
+        .scanner-frame::before, .scanner-frame::after, 
+        .scanner-frame-corner::before, .scanner-frame-corner::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #00fbfb;
+        }
+        .scanner-top-left { top: -2px; left: -2px; border-right: 0; border-bottom: 0; }
+        .scanner-top-right { top: -2px; right: -2px; border-left: 0; border-bottom: 0; }
+        .scanner-bottom-left { bottom: -2px; left: -2px; border-right: 0; border-top: 0; }
+        .scanner-bottom-right { bottom: -2px; right: -2px; border-left: 0; border-top: 0; }
+
+        @keyframes pulse-glow {
+            0% { opacity: 0.4; }
+            50% { opacity: 1; }
+            100% { opacity: 0.4; }
+        }
+        .animate-pulse-cyan {
+            animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body-md antialiased">
+<!-- Camera View Background (Simulated) -->
+<div class="fixed inset-0 z-0 overflow-hidden">
+<div class="absolute inset-0 bg-[#0a0a0a]"></div>
+<!-- Simulated Camera Feed Image -->
+<div class="w-full h-full bg-cover bg-center opacity-40 grayscale" data-alt="A blurry, first-person perspective view of a lush green forest clearing during dusk, with soft ambient light filtering through the leaves. The scene is atmospheric and serves as a background for a tactical research interface. Deep shadows and vibrant highlight flickers create a sense of mystery and outdoor exploration in a high-tech Pokémon trainer simulation." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDo45wC7NImzfCp1TqJrPgZET3v09Lmq7LaY30dDnGma_Qhlu_PBAZNWvwAzM3CpOUwODtqP606KK2dT503jdAn20rcsaBn_2dl9add47_GEy5Qa20G1UJ0raiYEQAY7k21XYZWnz_sjCjK9UEgZLpwS4Zb9ZjZLoUz8BuXIHxeQ2GQ3Jf0o5vmZiSh9wmdmcyIcqXKAUHajUAhVTH7514R2ZIO1T5FkVJod3Kl_mRJupOE9NmmFPh-y1PCXZzPahNdEV7taYt5PW2-')">
+</div>
+<!-- Scanner Overlay Lines -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-[320px] h-[320px] scanner-frame opacity-30">
+<div class="scanner-top-left scanner-frame-corner"></div>
+<div class="scanner-top-right scanner-frame-corner"></div>
+<div class="scanner-bottom-left scanner-frame-corner"></div>
+<div class="scanner-bottom-right scanner-frame-corner"></div>
+</div>
+</div>
+</div>
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-40 bg-white/10 backdrop-blur-xl border-b border-white/10 shadow-lg">
+<div class="flex justify-between items-center w-full px-margin-mobile py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container" data-icon="language">language</span>
+<h1 class="font-headline-md text-headline-md font-bold text-secondary-container">PokéScan</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/5 transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
+</button>
+</div>
+</header>
+<!-- Modal Backdrop -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-margin-mobile bg-black/60 backdrop-blur-sm">
+<!-- Result Card Modal -->
+<div class="glass-modal w-full max-w-md rounded-3xl overflow-hidden flex flex-col items-center animate-in fade-in zoom-in duration-300">
+<!-- Image Container -->
+<div class="relative w-full aspect-square p-6 flex items-center justify-center">
+<div class="absolute inset-0 bg-gradient-to-b from-secondary-container/10 to-transparent"></div>
+<div class="relative w-[300px] h-[300px] rounded-2xl overflow-hidden bg-white/5 border border-white/10 holographic-glow">
+<img class="w-full h-full object-contain p-4 drop-shadow-[0_0_20px_rgba(255,85,64,0.4)]" data-alt="A high-quality 3D render of the Pokémon Charmander standing in a heroic pose, its tail flame glowing brightly and casting dynamic orange light. The background is a minimalist, dark tech-studio setting with subtle cyan grid lines on the floor. The style is crisp and modern, reminiscent of high-end collectible figurine photography with professional cinematic lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1a7zaes24606-CmjV-BHApp0RL-W857EVM9cwOqNpQatJD7Tb8Fum26w3cr-44x7XjkCIRPkyFUAQxdJpadlZqINtYWGS0LHykIovjVSQmR7K-D3KIvT03AuH1YZUfzPZ0Y2_b5xW9XJ3lb54Vvyj2P4qu0-b3p1X4Np58bV7T6fXiVRahcsxQq4jptb2hgJYWOpV4ERUodyTMUaZ0ZjSaYZS-axmkbl4jDKlI1VoXouHrN62LJNA2bA6nknst3uot8-FV9ROe96k"/>
+<!-- Scanner Bracket Details inside card image -->
+<div class="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-secondary-container/50"></div>
+<div class="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-secondary-container/50"></div>
+<div class="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-secondary-container/50"></div>
+<div class="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-secondary-container/50"></div>
+</div>
+</div>
+<!-- Content Area -->
+<div class="w-full px-8 pb-10 flex flex-col items-center text-center">
+<div class="flex items-center gap-3 mb-2">
+<h2 class="font-headline-lg text-headline-lg text-secondary">Charmander</h2>
+<span class="font-data-num text-data-num text-tertiary-container">#004</span>
+</div>
+<!-- Badge -->
+<div class="mb-stack-md">
+<span class="inline-block px-4 py-1.5 rounded-full bg-primary-container text-white font-label-caps text-label-caps tracking-widest shadow-lg">
+                        FUEGO
+                    </span>
+</div>
+<!-- Stats Preview (Holographic style) -->
+<div class="w-full grid grid-cols-3 gap-4 mb-stack-lg">
+<div class="flex flex-col items-center">
+<span class="text-[10px] font-label-caps text-on-surface-variant/60 mb-1">HP</span>
+<div class="w-full h-1 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container w-[40%] holographic-glow"></div>
+</div>
+</div>
+<div class="flex flex-col items-center">
+<span class="text-[10px] font-label-caps text-on-surface-variant/60 mb-1">ATK</span>
+<div class="w-full h-1 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container w-[55%] holographic-glow"></div>
+</div>
+</div>
+<div class="flex flex-col items-center">
+<span class="text-[10px] font-label-caps text-on-surface-variant/60 mb-1">DEF</span>
+<div class="w-full h-1 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container w-[45%] holographic-glow"></div>
+</div>
+</div>
+</div>
+<!-- Primary Action -->
+<button class="w-full py-5 rounded-2xl bg-secondary-container text-on-secondary-fixed font-headline-md text-headline-md font-bold flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(0,251,251,0.3)] transition-all hover:brightness-110 active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="inventory_2" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+                    Guardar en mi Pokédex
+                </button>
+<!-- Secondary Action -->
+<button class="mt-4 text-on-surface-variant font-label-caps text-label-caps hover:text-white transition-colors">
+                    DESCARTAR ESCANEO
+                </button>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation (Hidden on this modal screen as per rules) -->
+<!-- It is suppressed because we are in a focused Task-Focused result view -->
+<script>
+        // Simple micro-interaction for the primary button
+        document.querySelector('button.bg-secondary-container').addEventListener('click', function() {
+            this.innerHTML = '<span class="material-symbols-outlined animate-spin" data-icon="sync">sync</span> Registrando...';
+            setTimeout(() => {
+                this.innerHTML = '<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span> ¡Registrado!';
+                this.classList.replace('bg-secondary-container', 'bg-green-500');
+            }, 1200);
+        });
+    </script>
+</body></html>
